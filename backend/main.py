@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from config import get_settings
-from api.routes import auth
+from api.routes import auth, agents
 
 settings = get_settings()
 
@@ -24,6 +24,7 @@ app.add_middleware(
 
 # Include routers
 app.include_router(auth.router)
+app.include_router(agents.router)
 
 
 @app.get("/")
